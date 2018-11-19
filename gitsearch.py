@@ -16,7 +16,7 @@ def gather_clone_urls(organization, no_forks=True):
     all_repos = gh.repos.list(user=organization).all()
     return all_repos
 
-def fullSearch(userName):
+def fullSearch(userName, usrSearch):
     # First get repo list 
     repoList = gather_clone_urls(userName)
     
@@ -24,12 +24,12 @@ def fullSearch(userName):
         # Make os call to run bash script
         repo = str(repo)
         repoName = repo[repo.find("(")+1:repo.find(")")]
-        command = "bash yomam.sh https://github.com/" +  userName + "/" + repoName
+        command = "bash yomam.sh https://github.com/" +  userName + "/" + repoName + " " + usrSearch
         os.system(command)
 
 
 def individualSearch(userName, repoName):
-    command = "bash yomam.sh https://github.com/" + userName + "/" + repoName + " " + repoName
+    command = "bash yomam.sh https://github.com/" + userName + "/" + repoName + " " + repoName + " " + usrSearch
     os.system(command)
 #
 ############# MAIN PROGRAM /UI ######
@@ -43,10 +43,12 @@ print("Select 0: full search")
 print("Select 1: for individual repo search")
 
 menuSelect = raw_input("Select Search> ")
+print("")
+selectText = raw_input("Search phrase> ")
 userName = raw_input("Target User> ")
 if(int(menuSelect) == 0):
     gh = pygithub3.Github()
-    fullSearch(userName)
+    fullSearch(userName, selectText)
 else:
     repoName = raw_input("Target Repo> ")
-    individualSearch(userName, repoName)
+    individualSearch(userName, repoName, selectText)
