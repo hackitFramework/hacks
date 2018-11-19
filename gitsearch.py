@@ -6,7 +6,7 @@
 # Git got grabed
 
 import os
-import requests
+#import requests
 import pygithub3
 #r = requests.get("https://api.github.com/users/hsamuelson/repos")
 #print(r.text)
@@ -24,22 +24,17 @@ def gather_clone_urls(organization, no_forks=True):
 
         yield repo.clone_url
 
-
-if __name__ == '__main__':
-    gh = pygithub3.Github()
-    username = raw_input("Target User> ")
-    clone_urls = gather_clone_urls(username)
-    for url in clone_urls:
-        print(url)
-
 def fullSearch(userName):
 	
     # First get repo list 
     
-
+    gh = pygithub3.Github()
+    repoList = gather_clone_urls(userName)
+    
     for repo in repoList:
-        # Make os call to run bash script 
-        command = "bash yomam.sh https://github.com/" + userName + "/" + repo + " " + repo
+        # Make os call to run bash script
+        repoName = repo.rsplit('/',1)[-1]
+        command = "bash yomam.sh " + repo + " " + repoName
         os.system(command)
 
 
