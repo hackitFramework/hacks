@@ -1,5 +1,8 @@
 git clone $1 &> /dev/null
 cd $2
-grep -o -Ril $3 ./
+if grep -o -Ril $3 ./
+then
+	echo "^" $2 "^" 
+fi
 cd ..
 rm -rf $2

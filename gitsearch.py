@@ -53,6 +53,7 @@ print("Select 1: for individual repo search")
 menuSelect = raw_input("Select Search> ")
 selectText = raw_input("Search phrase> ")
 userName = raw_input("Target User> ")
+print("Search phrase found in:")
 if(int(menuSelect) == 0):
     gh = pygithub3.Github()
     fullSearch(userName, selectText)
