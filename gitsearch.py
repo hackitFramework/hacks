@@ -52,8 +52,8 @@ print("")
 print("Select 0: full search")
 print("Select 1: for individual repo search")
 
-menuSelect = input("Select Search> ")
-userName = input("Target User> ")
+menuSelect = raw_input("Select Search> ")
+userName = raw_input("Target User> ")
 if(menuSelect == 0):
     fullSearch(userName)
 else:
