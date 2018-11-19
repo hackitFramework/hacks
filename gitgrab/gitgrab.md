@@ -7,8 +7,7 @@ Search git repos for key text
 Python Version: python3.x <br>
 
 ```
-pip install os
-pip install pygithub3
+bash install.sh
 ```
 ## Running
 Navigate to:
