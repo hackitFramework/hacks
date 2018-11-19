@@ -34,8 +34,6 @@ def webGrab(webUrl, query):
     command = "bash httrackDump.sh " + webUrl + " " + query
     os.system(command)
 
-def recallMethod():
-
 #
 ############# MAIN PROGRAM /UI ######
 #
