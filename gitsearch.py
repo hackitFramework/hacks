@@ -28,13 +28,13 @@ def fullSearch(userName, usrSearch):
         os.system(command)
 
 
-def individualSearch(userName, repoName):
+def individualSearch(userName, repoName, usrSearch):
     command = "bash yomam.sh https://github.com/" + userName + "/" + repoName + " " + repoName + " " + usrSearch
     os.system(command)
 #
 ############# MAIN PROGRAM /UI ######
 #
-os.system('cls')
+os.system('clear')
 print('')
 print("#####  #####  #####  #####  ####   #####  #")
 print("#        #      #    #      #   #  #   #  #### ")
@@ -52,7 +52,6 @@ print("Select 0: full search")
 print("Select 1: for individual repo search")
 
 menuSelect = raw_input("Select Search> ")
-print("")
 selectText = raw_input("Search phrase> ")
 userName = raw_input("Target User> ")
 if(int(menuSelect) == 0):
