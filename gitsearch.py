@@ -24,8 +24,7 @@ def fullSearch(userName, usrSearch):
         # Make os call to run bash script
         repo = str(repo)
         repoName = repo[repo.find("(")+1:repo.find(")")]
-        command = "bash yomam.sh https://github.com/" +  userName + "/" + repoName + " " + usrSearch
-        os.system(command)
+        individualSearch(userName, repoName, usrSearch)
 
 
 def individualSearch(userName, repoName, usrSearch):
