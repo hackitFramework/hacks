@@ -34,10 +34,19 @@ def individualSearch(userName, repoName):
 #
 ############# MAIN PROGRAM /UI ######
 #
+os.system('cls')
+print('')
 print("#####  #####  #####  #####  ####   #####  #")
 print("#        #      #    #      #   #  #   #  #### ")
 print("#   #    #      #    #   #  ####   #####  #   #")
 print("#####  #####    #    #####  #    # #   #  ####")
+print("")
+print("Christopher Hansen, Henry Samuelson")
+print("")
+print("*")
+print("Search git repos for key text")
+print("*")
+print("")
 print("")
 print("Select 0: full search")
 print("Select 1: for individual repo search")
