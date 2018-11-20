@@ -6,7 +6,7 @@
 # Git got grabed
 
 import os, pygithub3
-#import requests
+import requests
 
 gh = None
 
@@ -77,6 +77,7 @@ if(int(initialSelect) == 0):
 if(int(initialSelect) == 1):
     print("Select 0: full search")
     print("Select 1: for individual repo search")
+    print("Select 2: for a search of all memebers of an org")
 
     menuSelect = raw_input("Select Search> ")
     selectText = raw_input("Search phrase> ")
@@ -87,7 +88,7 @@ if(int(initialSelect) == 1):
         print("Results:")
         fullSearch(userName, selectText)
 
-    elif(str(menuSelect) == "org"):
+    elif(int(menuSelect) == 2):
         gh = pygithub3.Github()
         print("Results:")
         orgMembers(userName, selectText)
