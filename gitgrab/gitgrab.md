@@ -20,3 +20,4 @@ Run:
 python gitgrab.py
 ```
 ```gitgrab.py``` has a ui that will handle the rest.
+Gitcredentials will be prompted on private repos, simpily press [Enter] to skip though these. If correct credentials are supplied the repos will be searched.
