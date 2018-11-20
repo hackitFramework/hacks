@@ -7,8 +7,6 @@
 
 import os, pygithub3
 #import requests
-#r = requests.get("https://api.github.com/users/hsamuelson/repos")
-#print(r.text)
 
 gh = None
 
@@ -30,9 +28,19 @@ def fullSearch(userName, usrSearch):
 def individualSearch(userName, repoName, usrSearch):
     command = "bash yomam.sh https://github.com/" + userName + "/" + repoName + " " + repoName + " " + usrSearch
     os.system(command)
+
 def webGrab(webUrl, query):
     command = "bash httrackDump.sh " + webUrl + " " + query
     os.system(command)
+
+def orgMembers(userName, usrSearch):
+    #Run all org repos
+    print(userName + " Repos Search:")
+    fullSearch(userName, usrSearch)
+
+    #find all members of org
+    #r = requests.get("https://api.github.com/users/hsamuelson/repos")
+    #print(r.text)
 
 #
 ############# MAIN PROGRAM /UI ######
@@ -42,7 +50,7 @@ print('')
 print('  ________.__  __     ________            ___.    ')
 print(' /  _____/|__|/  |_  /  _____/___________ \_ |__  ')
 print('/   \  ___|  \   __\/   \  __\_  __ \__  \ | __ \ ')
-print('\    \_\  \  ||  |  \    \_\  \  | \// __ \| \_\ \ ')
+print('\    \_\  \  ||  |  \    \_\  \  | \// __ \| \_\ \')
 print(' \______  /__||__|   \______  /__|  (____  /___  /')
 print('        \/                  \/           \/    \/    v.01')
 print("")

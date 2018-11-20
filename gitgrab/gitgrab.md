@@ -1,5 +1,5 @@
 # GitGrab
-Search git repos for key text
+Search git repos for key text. Searches all commits, and code stored in the repo.
 <br>
 
 ## Requirements
