@@ -38,10 +38,16 @@ def orgMembers(userName, usrSearch):
     print(userName + " Repos Search:")
     fullSearch(userName, usrSearch)
 
-    #find all members of org
-    #r = requests.get("https://api.github.com/users/hsamuelson/repos")
-    #print(r.text)
-
+    # Find all member names
+    command = "https://api.github.com/orgs/" + userName + "/members"
+    r = requests.get(command)
+    r = r.json()
+    OrgUsers = []
+    for i in range(0,len(r)):
+        #OrgUsers.append(str(r[i]['login']))
+        userName2 = str(r[i]['login'])
+        print("Repos for: " + userName2 + "...")
+        fullSearch(userName2, usrSearch)
 #
 ############# MAIN PROGRAM /UI ######
 #
@@ -50,8 +56,8 @@ print('')
 print('  ________.__  __     ________            ___.    ')
 print(' /  _____/|__|/  |_  /  _____/___________ \_ |__  ')
 print('/   \  ___|  \   __\/   \  __\_  __ \__  \ | __ \ ')
-print('\    \_\  \  ||  |  \    \_\  \  | \// __ \| \_\ \')
-print(' \______  /__||__|   \______  /__|  (____  /___  /')
+print('\    \_\  \  ||  |  \    \_\  \  | \// __ \| \_\ \ ')
+print(' \______  /__||__|   \______  /__|  (____  /___  / ')
 print('        \/                  \/           \/    \/    v.01')
 print("")
 print("Christopher Hansen, Henry Samuelson")
@@ -80,6 +86,12 @@ if(int(initialSelect) == 1):
         gh = pygithub3.Github()
         print("Results:")
         fullSearch(userName, selectText)
+
+    elif(str(menuSelect) == "org"):
+        gh = pygithub3.Github()
+        print("Results:")
+        orgMembers(userName, selectText)
+
     else:
         repoName = raw_input("Target Repo> ")
         print("Results:")
