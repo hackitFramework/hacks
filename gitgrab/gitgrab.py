@@ -35,19 +35,16 @@ def webGrab(webUrl, query):
 
 def orgMembers(userName, usrSearch):
     #Run all org repos
-    print(userName + " Repos Search:")
+    print("\n" + userName + " Repos Search:")
     fullSearch(userName, usrSearch)
 
     # Find all member names
     command = "https://api.github.com/orgs/" + userName + "/members"
-    r = requests.get(command)
-    r = r.json()
-    OrgUsers = []
-    for i in range(0,len(r)):
-        #OrgUsers.append(str(r[i]['login']))
-        userName2 = str(r[i]['login'])
-        print("Repos for: " + userName2 + "...")
-        fullSearch(userName2, usrSearch)
+    r = requests.get(command).json()
+    for member in r:
+        memb = str(member['login'])
+        print("Repos for: " + memb + "...")
+        fullSearch(memb, usrSearch)
 #
 ############# MAIN PROGRAM /UI ######
 #
@@ -95,5 +92,5 @@ if(int(initialSelect) == 1):
 
     else:
         repoName = raw_input("Target Repo> ")
-        print("Results:")
+        print("Results: \n")
         individualSearch(userName, repoName, selectText)
