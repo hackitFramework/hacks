@@ -3,7 +3,6 @@
 
 ## Tools
 <li>[GitGrab]:(https://github.com/hsamuelson/hacks/blob/master/gitgrab/gitgrab.md)</li>
-<li>django Injector</li>
 
 <br>
 <br>
