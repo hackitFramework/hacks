@@ -5,7 +5,7 @@
 
 #THIS IS A TEST FILE TO AVLOID REPULLING HTML EVERY TIME WE WANT TO TEST NEW
 # HTML ANALYSIS
-html_doc1 = open("outputer.html", 'r')
+html_doc1 = open("test.html", 'r')
 html_doc = html_doc1.read()
 html_doc1.close()
 
