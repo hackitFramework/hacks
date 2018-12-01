@@ -44,3 +44,4 @@ for i in range(1, len(contents)):
         # Add this line and line below it.
         fContent.append(contents[i])
         fContent.append(contents[i+1])
+print(fContent)
