@@ -33,7 +33,7 @@ print(soup.get_text("/n"))
 
 contents = []
 for line in soup.get_text().split('\n'):
-    if(line != ''):
+    if(line != '' or line != '\n'):
         temp = line.split()
         temp =  str(temp)[1:len(str(temp))-1]
         contents.append(temp)

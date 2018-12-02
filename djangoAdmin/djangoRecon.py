@@ -59,7 +59,7 @@ def textOfInterest(soup):
     contents = []
     # Split into lines
     for line in soup.get_text().split('\n'):
-        if(line != ''): # Ignores blank lines
+        if(line != '' or line != '\n'): # Ignores blank lines and lines that are just line breaks
             temp = line.split()
             temp =  str(temp)[1:len(str(temp))-1]
             contents.append(temp)
