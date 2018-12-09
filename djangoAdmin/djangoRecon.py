@@ -59,7 +59,7 @@ def textOfInterest(soup):
     contents = []
     # Split into lines
     for line in soup.get_text().split('\n'):
-        if(line != '' or line != '\n'): # Ignores blank lines and lines that are just line breaks
+        if(line != ''): # Ignores blank lines and lines that are just line breaks
             temp = line.split()
             temp =  str(temp)[1:len(str(temp))-1]
             contents.append(temp)
@@ -67,8 +67,8 @@ def textOfInterest(soup):
     fContent = [] #this will be in an ordered method:  [header-1, contents-1, header-n,contents-n]
     for i in range(1, len(contents)):
         if(contents[i].isupper()): # Is this a header?
-            fContent.append(contents[i]) # Get header
-            fContent.append(contents[i+1]) # Get contents
+            fContent.append(contents[i]).strip() # Get header
+            fContent.append(contents[i+1]).strip() # Get contents
     return fContent
 
 requestPage()
