@@ -1,9 +1,4 @@
-# hacks
-### A collection of hacking tools
-
-## Tools
-<li>[GitGrab]:(https://github.com/hsamuelson/hacks/blob/master/gitgrab/gitgrab.md)</li>
-
-<br>
-<br>
-Written by Christopher Hansen & Henry Samuelson
+## hacks
+#### Henry Samuelson Christopher Hansen
+This is a place for hacks that are still in development.
+After testing hack tools are moved into their individual repos for maintainment. 
