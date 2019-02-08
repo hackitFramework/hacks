@@ -1,1 +1,1 @@
-CreateObject("SAPI.SpVoice").Speak("Hi Sam Hinson. I love you")
+CreateObject("SAPI.SpVoice").Speak("You may think that you are safe, but death is at your doorstep.")
