@@ -1,5 +1,5 @@
 Set Player = CreateObject("WMPlayer.OCX")
-Player.URL = "C:\Users\chans\Downloads\Yee.wav"
+Player.URL = "" ' Path to Sound File
 
 Player.controls.play
 While Player.playState <> 1
