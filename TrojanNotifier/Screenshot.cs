@@ -13,15 +13,10 @@ namespace Test_Application_C_Sharp
 { 
     class Program 
     {
-        [DllImport("kernel32.dll", SetLastError=true, ExactSpelling=true)]
-    static extern bool FreeConsole();
-
-
-
         static void Main(string[] args) 
         {
-            FreeConsole();
-            
+        
+	    Console.SetWindowSize(1,1);         
             // Setting up image container
             Bitmap memoryImage;
             memoryImage = new Bitmap(1920, 1080); 
