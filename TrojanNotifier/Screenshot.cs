@@ -43,22 +43,22 @@ namespace Test_Application_C_Sharp
             { 
                 str = string.Format(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + 
                       @"\Screenshot.png"); 
-            } 
-            catch (Exception er) 
-            { 
-                Console.WriteLine("Sorry, there was an error: " + er.Message); 
-                Console.WriteLine(); 
-            } 
+            }
+            catch (Exception er)
+            {
+                Console.WriteLine("Sorry, there was an error: " + er.Message);
+                Console.WriteLine();
+            }
  
-            // Save it! 
-            Console.WriteLine("Saving the image..."); 
-            memoryImage.Save(str); 
+            // Save it!
+            Console.WriteLine("Saving the image...");
+            memoryImage.Save(str);
  
-            // Write the message, 
-            Console.WriteLine("Picture has been saved..."); 
-            Console.WriteLine(); 
-            // Pause the program to show the message. 
-            Program.pause(); 
-        } 
-    } 
-} 
+            // Write the message,
+            Console.WriteLine("Picture has been saved...");
+            Console.WriteLine();
+            // Pause the program to show the message.
+            Program.pause();
+        }
+    }
+}
