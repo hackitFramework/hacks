@@ -9,24 +9,19 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
 
-
 namespace Test_Application_C_Sharp 
 { 
     class Program 
     {
-        // Activate Console Window
-        [DllImport("user32.dll")]
-        public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
-        
-        // Hide or show
-        [DllImport("user32.dll")]
-        static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+        [DllImport("kernel32.dll", SetLastError=true, ExactSpelling=true)]
+    static extern bool FreeConsole();
+
+
 
         static void Main(string[] args) 
         {
-            IntPtr hWnd = FindWindow(null, System.Windows.Forms.Application.ExecutablePath);
-            ShowWindow(hWnd, 0);
-
+            FreeConsole();
+            
             // Setting up image container
             Bitmap memoryImage;
             memoryImage = new Bitmap(1920, 1080); 
