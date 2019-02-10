@@ -4,40 +4,39 @@ using System.Linq;
 using System.Text; 
 using System.Threading.Tasks; 
 using System.Drawing; 
-using System.IO; 
- 
+using System.IO;
+using System.Windows.Forms;
+using System.Runtime.InteropServices;
+
+
+
 namespace Test_Application_C_Sharp 
 { 
     class Program 
-    { 
-        // a method to pause the console. 
-        // not a part of this project! 
-        public static void pause() 
-        { 
-            Console.Read(); 
-        } 
- 
+    {
+        // Activate Console Window
+        [DllImport("user32.dll")]
+        public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+        
+        // Hide or show
+        [DllImport("user32.dll")]
+        static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
         static void Main(string[] args) 
-        { 
-            // Start the process... 
-            Console.WriteLine("Initializing the variables..."); 
-            Console.WriteLine(); 
-            Bitmap memoryImage; 
-	    //System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width
+        {
+            IntPtr hWnd = FindWindow(null, System.Windows.Forms.Application.ExecutablePath);
+            ShowWindow(hWnd, 0);
+
+            // Setting up image container
+            Bitmap memoryImage;
             memoryImage = new Bitmap(1920, 1080); 
             Size s = new Size(memoryImage.Width, memoryImage.Height); 
- 
-            // Create graphics 
-            Console.WriteLine("Creating Graphics..."); 
-            Console.WriteLine(); 
+  
+            // Getting screen
             Graphics memoryGraphics = Graphics.FromImage(memoryImage); 
- 
-            // Copy data from screen 
-            Console.WriteLine("Copying data from screen..."); 
-            Console.WriteLine(); 
             memoryGraphics.CopyFromScreen(0, 0, 0, 0, s); 
  
-            //That's it! Save the image in the directory and this will work like charm. 
+            // Save image 
             string str = ""; 
             try 
             { 
@@ -49,16 +48,7 @@ namespace Test_Application_C_Sharp
                 Console.WriteLine("Sorry, there was an error: " + er.Message);
                 Console.WriteLine();
             }
- 
-            // Save it!
-            Console.WriteLine("Saving the image...");
             memoryImage.Save(str);
- 
-            // Write the message,
-            Console.WriteLine("Picture has been saved...");
-            Console.WriteLine();
-            // Pause the program to show the message.
-            Program.pause();
         }
     }
 }
