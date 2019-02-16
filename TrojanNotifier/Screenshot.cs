@@ -30,8 +30,7 @@ namespace Test_Application_C_Sharp
             string str = ""; 
             try 
             { 
-                str = string.Format(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + 
-                      @"\Screenshot.png"); 
+                str = string.Format(@".\screenshot.png"); 
             }
             catch (Exception er)
             {
